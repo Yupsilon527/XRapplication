@@ -1,0 +1,33 @@
+# Hand Pose
+Hand pose detection from MediaPipe. This predictor implements the [hand pose model](https://google.github.io/mediapipe/solutions/hands.html), but not the palm detector. It only supports detecting a single hand in the image. This package requires [NatML](https://github.com/natmlx/NatML).
+
+## Detecting Hand Pose in an Image
+First, create the predictor:
+```csharp
+// Fetch the model data from NatML Hub
+var modelData = await MLModelData.FromHub("@natsuite/hand-pose");
+// Deserialize the model
+var model = modelData.Deserialize();
+// Create the predictor
+var predictor = new HandPosePredictor(model);
+```
+
+Then detect the hand pose in an image:
+```csharp
+Texture2D image = ...; // Can also be a `WebCamTexture` or pixel buffer
+// Detect hand pose in an image
+HandPosePredictor.Hand hand = predictor.Predict(image);
+```
+
+## Requirements
+- Unity 2020.3+
+- [NatML 1.0.9+](https://github.com/natmlx/NatML)
+
+## Quick Tips
+- Discover more ML models on [NatML Hub](https://hub.natml.ai).
+- See the [NatML documentation](https://docs.natml.ai/unity)
+- Join the [NatML community on Discord](https://discord.gg/y5vwgXkz2f)
+- Check out the [NatML blog](https://blog.natml.ai)
+- Contact us at [hi@natml.ai](mailto:hi@natml.ai)
+
+Thank you very much!
