@@ -60,7 +60,6 @@ public class XRHandPoseVisualizer : MonoBehaviour
         // Predict
         HandPosePredictor.Hand hand = predictor.Predict(input);
         // Visualize
-        //Debug.Log($"Detected {hand.handedness} hand with score {hand.score:0.##} after {watch.Elapsed.TotalMilliseconds}ms");
         RenderHandData(hand);
         BusyCoroutine = null;
     }
@@ -85,6 +84,8 @@ public class XRHandPoseVisualizer : MonoBehaviour
 
     void RenderHandData(HandPosePredictor.Hand hand)
     {
+        if (hand == null)
+            return;
         int iB = 0;
         foreach (Vector3 p in hand)
         {

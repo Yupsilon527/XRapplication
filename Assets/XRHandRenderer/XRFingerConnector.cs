@@ -17,18 +17,18 @@ public class XRFingerConnector : MonoBehaviour
     }
     void Update()
     {
-        PhysicsPos();
+        SnapToPos();
     }
     private void OnValidate()
     {
         SnapToPos();
-        transform.localScale = new Vector3(10, (Master.transform.position - Slave.transform.position).magnitude * .5f, 10);
     }
     void SnapToPos()
     {
         Vector3 deltaPos = (Master.transform.position - Slave.transform.position);
-        transform.localPosition = Master.transform.position - deltaPos / 2f;
+        transform.localScale = new Vector3(10, deltaPos.magnitude * .5f, 10);
         transform.up = deltaPos;
+        transform.position = Master.transform.position - deltaPos / 2f;
     }
     void PhysicsPos()
     {
