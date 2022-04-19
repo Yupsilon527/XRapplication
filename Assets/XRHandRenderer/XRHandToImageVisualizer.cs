@@ -10,12 +10,20 @@ public class XRHandToImageVisualizer : MonoBehaviour
     public float UpdateInterval = 1;
 
     float LastUpdateTime = 3;
+    private void Start()
+    {
+        Debug.Log("XRHandToImageVisualizer Start");
+        vis.ChangeImage(startimage, true);
+        LastUpdateTime = UpdateInterval;
+    }
     private void Update()
     {
+        //Debug.Log("Updatetime "+ LastUpdateTime + " " + Time.time);
         if (LastUpdateTime > Time.time)
             return;
         LastUpdateTime = Time.time + UpdateInterval;
-        if (Application.isPlaying)
+        Debug.Log("XRHandToImageVisualizer Update");
+        //if (Application.isPlaying)
             vis.ChangeImage(startimage, false);
 }
 }

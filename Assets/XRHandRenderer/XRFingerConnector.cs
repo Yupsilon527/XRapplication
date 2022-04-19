@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class XRFingerConnector : MonoBehaviour
 {
+
+    public float FingerThickness = 10;
+    public float MovementTime = 1;
     public float MoveSpeed = 1;
     public float AngSpeed = 1;
 
@@ -17,7 +20,7 @@ public class XRFingerConnector : MonoBehaviour
     }
     void Update()
     {
-        SnapToPos();
+        SmoothMove(MovementTime);
     }
     private void OnValidate()
     {
@@ -26,9 +29,24 @@ public class XRFingerConnector : MonoBehaviour
     void SnapToPos()
     {
         Vector3 deltaPos = (Master.transform.position - Slave.transform.position);
-        transform.localScale = new Vector3(10, deltaPos.magnitude * .5f, 10);
+        transform.localScale = new Vector3(FingerThickness, deltaPos.magnitude * .5f, FingerThickness);
         transform.up = deltaPos;
         transform.position = Master.transform.position - deltaPos / 2f;
+    }
+    void SmoothMove(float time)
+    {
+        Vector3 deltaPos = (Master.transform.position - Slave.transform.position);
+        LeanTween.move(gameObject, Master.transform.position - deltaPos / 2f, time);
+        LeanTween.scale(gameObject, new Vector3(FingerThickness, deltaPos.magnitude * .5f, FingerThickness), time);
+
+        Quaternion startRot = transform.rotation;
+
+        transform.up = deltaPos;
+        Quaternion desiredRot = transform.rotation;
+        transform.rotation = startRot;
+
+        LeanTween.rotate(gameObject, desiredRot.eulerAngles, time);
+
     }
     void PhysicsPos()
     {

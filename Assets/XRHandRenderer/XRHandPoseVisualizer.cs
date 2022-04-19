@@ -26,7 +26,7 @@ public class XRHandPoseVisualizer : MonoBehaviour
     }
     public void ChangeImage(Texture2D image,bool stop_current)
     {
-
+        Debug.Log("Change image to "+image.name);
         if (BusyCoroutine != null)
         {
             if (stop_current)
@@ -43,14 +43,21 @@ public class XRHandPoseVisualizer : MonoBehaviour
             bone.TieToTransform(ActiveBones[(int)bone.BoneID].transform);
         }
     }
-    Coroutine BusyCoroutine;
+    Coroutine BusyCoroutine=null;
     IEnumerator InterpretImage(Texture2D image)
     {
         Debug.Log("Fetching model data from NatML...");
         // Fetch the model data from NatML
 
+        float StartTime = Time.time;
         Task<MLModelData> task = MLModelData.FromHub("@natsuite/hand-pose", accessKey);
-        yield return new WaitUntil(() => task.IsCompleted);
+        //yield return new WaitUntil(() => task.IsCompleted);
+        yield return new WaitWhile(() =>
+        {
+            Debug.Log("Waiting at " + Time.time + ", total time " + (Time.time - StartTime));
+            return !task.IsCompleted;
+        });
+        Debug.Log("Task completed at " + Time.time + ", total time " + (Time.time - StartTime));
         // Deserialize the model
         MLModel model = task.Result.Deserialize();
         // Create the hand pose predictor
@@ -68,6 +75,7 @@ public class XRHandPoseVisualizer : MonoBehaviour
     List<GameObject> ActiveBones = new List<GameObject>();
     void InitHand()
     {
+        Debug.Log("Initialize hand...");
         for (int iB = 0; iB<=20; iB++)
         {
             PoolBone();
@@ -86,6 +94,7 @@ public class XRHandPoseVisualizer : MonoBehaviour
     {
         if (hand == null)
             return;
+        Debug.Log("Try Draw Hand...");
         int iB = 0;
         foreach (Vector3 p in hand)
         {
@@ -93,5 +102,6 @@ public class XRHandPoseVisualizer : MonoBehaviour
             gOb.transform.localPosition = p;
             iB++;
         }
+        Debug.Log("Hand Drawing Completed!");
     }
 }

@@ -15,7 +15,8 @@ public class AndroidCameraFeed : MonoBehaviour
     private void Start()
     {
         FindAndroidCam();
-
+        if (cameraTexture != null)
+            ReadCamera();
     }
     private void Update()
     {
@@ -46,7 +47,7 @@ public class AndroidCameraFeed : MonoBehaviour
         tex.SetPixels(cameraTexture.GetPixels());
         tex.Apply();
 
-        output.transform.localScale = new Vector3(1, cameraTexture.videoVerticallyMirrored ? -1 : 1, 1);
+        output.transform.localScale = new Vector3(1, cameraTexture.videoVerticallyMirrored ? 1 : -1, 1);
         output.transform.localRotation = Quaternion.Euler(Vector3.forward * cameraTexture.videoRotationAngle);
 
         SetTexture(tex);
@@ -54,6 +55,6 @@ public class AndroidCameraFeed : MonoBehaviour
     void SetTexture(Texture2D texture)
     {
         output.texture = texture;
-        vis.ChangeImage(texture, true);
+        vis.ChangeImage(texture, false);
     }
 }
