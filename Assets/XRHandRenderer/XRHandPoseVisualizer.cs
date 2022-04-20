@@ -18,36 +18,34 @@ public class XRHandPoseVisualizer : MonoBehaviour
     [Header(@"Rig To Mesh")]
     public Transform InitialHand;
 
+    public int MaxCoroutines = 3;
+
     void Start()
     {
         InitHand();
         if (InitialHand != null)
             RigToHand(InitialHand);
     }
-    public void ChangeImage(Texture2D image,bool stop_current)
+    public void ChangeImage(Texture image)
     {
-        Debug.Log("Change image to "+image.name);
-        if (BusyCoroutine != null)
-        {
-            if (stop_current)
-                StopCoroutine(BusyCoroutine);
-            else
-                return;
-        }
-        BusyCoroutine = StartCoroutine(InterpretImage(image));
+        Debug.Log("Change image to " + image.name);
+        if (nCoroutines < MaxCoroutines)
+            StartCoroutine(InterpretImage((Texture2D)image));
     }
     void RigToHand(Transform hand)
     {
-        foreach (XRBoneController bone in InitialHand.GetComponentsInChildren<XRBoneController>())
+        foreach (XRBoneController bone in hand.GetComponentsInChildren<XRBoneController>())
         {
             bone.TieToTransform(ActiveBones[(int)bone.BoneID].transform);
         }
     }
-    Coroutine BusyCoroutine=null;
+    float LastUpdateTime = 0;
+    int nCoroutines = 0;
     IEnumerator InterpretImage(Texture2D image)
     {
         Debug.Log("Fetching model data from NatML...");
         // Fetch the model data from NatML
+        nCoroutines++;
 
         float StartTime = Time.time;
         Task<MLModelData> task = MLModelData.FromHub("@natsuite/hand-pose", accessKey);
@@ -55,20 +53,33 @@ public class XRHandPoseVisualizer : MonoBehaviour
         yield return new WaitWhile(() =>
         {
             Debug.Log("Waiting at " + Time.time + ", total time " + (Time.time - StartTime));
-            return !task.IsCompleted;
+            return StartTime < LastUpdateTime || !task.IsCompleted;
         });
         Debug.Log("Task completed at " + Time.time + ", total time " + (Time.time - StartTime));
-        // Deserialize the model
-        MLModel model = task.Result.Deserialize();
-        // Create the hand pose predictor
-        HandPosePredictor predictor = new HandPosePredictor(model);
-        // Create input feature
-        var input = new MLImageFeature(image);
-        // Predict
-        HandPosePredictor.Hand hand = predictor.Predict(input);
-        // Visualize
-        RenderHandData(hand);
-        BusyCoroutine = null;
+        if (StartTime >= LastUpdateTime)
+        {
+            LastUpdateTime = StartTime;
+            // Deserialize the model
+            using (MLModel model = task.Result.Deserialize())
+            {
+                // Create the hand pose predictor
+                using (HandPosePredictor predictor = new HandPosePredictor(model))
+                {
+                    // Create input feature
+                    var input = new MLImageFeature(image);
+                    // Predict
+                    HandPosePredictor.Hand hand = predictor.Predict(input);
+                    // Visualize
+                    RenderHandData(hand);
+                }
+            }
+        }
+        nCoroutines--;
+    }
+    public void StopAll()
+    {
+        StopAllCoroutines();
+        nCoroutines = 0;
     }
 
     public GameObject BonePrefab;

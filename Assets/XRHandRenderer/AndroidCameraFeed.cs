@@ -9,9 +9,9 @@ public class AndroidCameraFeed : MonoBehaviour
 
     public RawImage output;
 
-    public float UpdateInterval = 1;
+    public float UpdateInterval = .1f;
 
-    float LastUpdateTime = 3;
+    float LastUpdateTime = 0;
     private void Start()
     {
         FindAndroidCam();
@@ -43,18 +43,15 @@ public class AndroidCameraFeed : MonoBehaviour
     }
     void ReadCamera()
     {
-        Texture2D tex = new Texture2D(cameraTexture.width, cameraTexture.height);
+        /*Texture2D tex = new Texture2D(cameraTexture.width, cameraTexture.height);
         tex.SetPixels(cameraTexture.GetPixels());
-        tex.Apply();
+        tex.Apply();*/
 
         output.transform.localScale = new Vector3(1, cameraTexture.videoVerticallyMirrored ? 1 : -1, 1);
         output.transform.localRotation = Quaternion.Euler(Vector3.forward * cameraTexture.videoRotationAngle);
+        output.GetComponent<AspectRatioFitter>().aspectRatio = Camera.main.aspect;
 
-        SetTexture(tex);
-    }
-    void SetTexture(Texture2D texture)
-    {
-        output.texture = texture;
-        vis.ChangeImage(texture, false);
+        output.texture = cameraTexture;
+        vis.ChangeImage(cameraTexture);        
     }
 }
