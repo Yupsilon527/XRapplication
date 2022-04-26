@@ -34,8 +34,12 @@ public class AndroidCameraFeed : MonoBehaviour
             return;
         foreach(var device in devices)
         {
+#if UNITY_ANDROID
             if (!device.isFrontFacing)
                 cameraTexture = new WebCamTexture(device.name,Screen.width,Screen.height);
+#else
+            cameraTexture = new WebCamTexture(device.name, Screen.width, Screen.height);
+#endif
         }
         if (cameraTexture == null)
             return;

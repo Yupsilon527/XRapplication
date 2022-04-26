@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2382,6 +2382,7 @@ GameObject:
   - component: {fileID: 952022132}
   - component: {fileID: 952022136}
   - component: {fileID: 952022137}
+  - component: {fileID: 952022138}
   m_Layer: 0
   m_Name: HandPoseSample
   m_TagString: Untagged
@@ -2403,7 +2404,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accessKey: pgFv5LZH0GuP8_hqiIJuw
   InitialHand: {fileID: 321157356}
-  MaxCoroutines: 3
+  MaxCoroutines: 2
   BonePrefab: {fileID: 4512946658944053943, guid: 13fc01a34b9e1b14c813f0a6428b45bf,
     type: 3}
 --- !u!4 &952022135
@@ -2443,7 +2444,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 952022131}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22cdef36e81329445a7e23fee315dff7, type: 3}
   m_Name: 
@@ -2451,6 +2452,24 @@ MonoBehaviour:
   vis: {fileID: 952022132}
   output: {fileID: 1913411205}
   UpdateInterval: 0.5
+--- !u!114 &952022138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952022131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e09a510808124e9426c2b78fccae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_CameraManager: {fileID: 0}
+  m_Cam: {fileID: 1502939576}
+  m_TargetGo: {fileID: 321157354}
+  m_Go: {fileID: 0}
+  m_RawImage: {fileID: 1913411205}
+  m_BlitMat: {fileID: 0}
 --- !u!1 &956568711
 GameObject:
   m_ObjectHideFlags: 0
