@@ -28,20 +28,33 @@ public class XRHandPoseVisualizer : MonoBehaviour
         if (InitialHand != null)
             RigToHand(InitialHand);
     }
-    Texture2D renderTex ;
+    Texture2D renderTex;
     public void ChangeImage(WebCamTexture image)
     {
         if (image == null)
             return;
         Debug.Log("Change image");
         if (nCoroutines < MaxCoroutines)
-            {
+        {
             renderTex = new Texture2D(image.width, image.height);
             renderTex.SetPixels(image.GetPixels());
             renderTex.Apply();
-                StartCoroutine(InterpretImage(renderTex));
-            }
-          }
+            StartCoroutine(InterpretImage(renderTex));
+        }
+    }
+    public void ChangeImage(Texture2D image)
+    {
+        if (image == null)
+            return;
+        Debug.Log("Change image");
+        if (nCoroutines < MaxCoroutines)
+        {
+            renderTex = new Texture2D(image.width, image.height);
+            renderTex.SetPixels(image.GetPixels());
+            renderTex.Apply();
+            StartCoroutine(InterpretImage(renderTex));
+        }
+    }
     void RigToHand(Transform hand)
     {
         foreach (XRBoneController bone in hand.GetComponentsInChildren<XRBoneController>())
