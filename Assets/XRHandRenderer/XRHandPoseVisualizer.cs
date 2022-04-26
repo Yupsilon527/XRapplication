@@ -22,16 +22,26 @@ public class XRHandPoseVisualizer : MonoBehaviour
 
     void Start()
     {
+        renderTex = new Texture2D(Screen.width, Screen.height);
+        
         InitHand();
         if (InitialHand != null)
             RigToHand(InitialHand);
     }
-    public void ChangeImage(Texture image)
+    Texture2D renderTex ;
+    public void ChangeImage(WebCamTexture image)
     {
-        Debug.Log("Change image to " + image.name);
+        if (image == null)
+            return;
+        Debug.Log("Change image");
         if (nCoroutines < MaxCoroutines)
-            StartCoroutine(InterpretImage((Texture2D)image));
-    }
+            {
+            renderTex = new Texture2D(image.width, image.height);
+            renderTex.SetPixels(image.GetPixels());
+            renderTex.Apply();
+                StartCoroutine(InterpretImage(renderTex));
+            }
+          }
     void RigToHand(Transform hand)
     {
         foreach (XRBoneController bone in hand.GetComponentsInChildren<XRBoneController>())
@@ -58,17 +68,24 @@ public class XRHandPoseVisualizer : MonoBehaviour
         Debug.Log("Task completed at " + Time.time + ", total time " + (Time.time - StartTime));
         if (StartTime >= LastUpdateTime)
         {
+            Debug.Log("A "+ Time.deltaTime);
             LastUpdateTime = StartTime;
             // Deserialize the model
             using (MLModel model = task.Result.Deserialize())
             {
+                yield return new WaitForEndOfFrame();
+                Debug.Log("B " + Time.deltaTime);
                 // Create the hand pose predictor
                 using (HandPosePredictor predictor = new HandPosePredictor(model))
                 {
+                    yield return new WaitForEndOfFrame();
+                    Debug.Log("C " + Time.deltaTime);
                     // Create input feature
                     var input = new MLImageFeature(image);
                     // Predict
                     HandPosePredictor.Hand hand = predictor.Predict(input);
+                    yield return new WaitForEndOfFrame();
+                    Debug.Log("D " + Time.deltaTime);
                     // Visualize
                     RenderHandData(hand);
                 }

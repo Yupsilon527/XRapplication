@@ -20,7 +20,8 @@ public class XRFingerConnector : MonoBehaviour
     }
     void Update()
     {
-        SmoothMove(MovementTime);
+        SnapToPos();
+    //    SmoothMove(MovementTime);
     }
     private void OnValidate()
     {
