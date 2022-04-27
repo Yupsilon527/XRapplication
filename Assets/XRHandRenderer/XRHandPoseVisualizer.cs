@@ -86,18 +86,18 @@ public class XRHandPoseVisualizer : MonoBehaviour
             // Deserialize the model
             using (MLModel model = task.Result.Deserialize())
             {
-                yield return new WaitForEndOfFrame();
+                //yield return new WaitForEndOfFrame();
                 Debug.Log("B " + Time.deltaTime);
                 // Create the hand pose predictor
                 using (HandPosePredictor predictor = new HandPosePredictor(model))
                 {
-                    yield return new WaitForEndOfFrame();
+                    //yield return new WaitForEndOfFrame();
                     Debug.Log("C " + Time.deltaTime);
                     // Create input feature
                     var input = new MLImageFeature(image);
                     // Predict
                     HandPosePredictor.Hand hand = predictor.Predict(input);
-                    yield return new WaitForEndOfFrame();
+                    //yield return new WaitForEndOfFrame();
                     Debug.Log("D " + Time.deltaTime);
                     // Visualize
                     RenderHandData(hand);
