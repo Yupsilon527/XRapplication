@@ -84,14 +84,14 @@ public class XRFingerConnector : MonoBehaviour
         Quaternion rFinal = transform.rotation;
         transform.rotation = rStart;
 
-        //Quaternion deltaRot = ;
-        /*if (Mathf.Abs(deltaRot.x) < AngSpeed && Mathf.Abs(deltaRot.y) < AngSpeed && Mathf.Abs(deltaRot.z) < AngSpeed)
+        /*Quaternion deltaRot = Quaternion.RotateTowards( rFinal, rStart, AngSpeed) ;
+        if (Mathf.Abs(deltaRot.x) < AngSpeed && Mathf.Abs(deltaRot.y) < AngSpeed && Mathf.Abs(deltaRot.z) < AngSpeed)
         {
             rBody.rotation = Quaternion.Euler(rB);
             rBody.angularVelocity = Vector3.zero;
         }
-        else */
-        //rBody.angularVelocity = deltaRot.eulerAngles;
+        else
+        rBody.angularVelocity = deltaRot.eulerAngles; */
         transform.rotation = Quaternion.RotateTowards(rStart, rFinal, AngSpeed);
 
     }
