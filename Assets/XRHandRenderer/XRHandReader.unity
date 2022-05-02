@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -270,8 +270,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 2081802962}
   Slave: {fileID: 6689449}
 --- !u!54 &63241953
@@ -404,8 +404,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 156976720}
   Slave: {fileID: 627139986}
 --- !u!54 &69451340
@@ -538,8 +538,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 1726165958}
   Slave: {fileID: 2081802962}
 --- !u!54 &115717438
@@ -1201,8 +1201,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 1327244177}
   Slave: {fileID: 1859668447}
 --- !u!54 &348890699
@@ -1335,8 +1335,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 627139986}
   Slave: {fileID: 543578135}
 --- !u!54 &385910055
@@ -1954,8 +1954,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 1859668447}
   Slave: {fileID: 2019535794}
 --- !u!54 &909011457
@@ -2185,8 +2185,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 1507173180}
   Slave: {fileID: 183442935}
 --- !u!54 &916995855
@@ -2598,8 +2598,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 609535201}
   Slave: {fileID: 1726165958}
 --- !u!54 &962302011
@@ -2732,8 +2732,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 1183212178}
   Slave: {fileID: 337078680}
 --- !u!54 &997145206
@@ -2963,8 +2963,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 1507173180}
   Slave: {fileID: 183442935}
 --- !u!54 &1065941911
@@ -3097,8 +3097,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 1634085685}
   Slave: {fileID: 344017349}
 --- !u!54 &1065948306
@@ -3231,8 +3231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 956568711}
   Slave: {fileID: 1183212178}
 --- !u!54 &1140500715
@@ -3462,8 +3462,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 183442935}
   Slave: {fileID: 613200129}
 --- !u!54 &1211104709
@@ -3596,8 +3596,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 680910942}
   Slave: {fileID: 609535201}
 --- !u!54 &1212021422
@@ -3730,8 +3730,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 680910942}
   Slave: {fileID: 1507173180}
 --- !u!54 &1327244180
@@ -3864,8 +3864,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 2019535794}
   Slave: {fileID: 1634085685}
 --- !u!54 &1383610647
@@ -3998,8 +3998,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 1005960330}
   Slave: {fileID: 956568711}
 --- !u!54 &1445628351
@@ -4132,8 +4132,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 680910942}
   Slave: {fileID: 1005960330}
 --- !u!54 &1501275081
@@ -4447,8 +4447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 156976720}
   Slave: {fileID: 627139986}
 --- !u!54 &1569805754
@@ -4581,8 +4581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 613200129}
   Slave: {fileID: 909697329}
 --- !u!54 &1595987072
@@ -4715,8 +4715,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 543578135}
   Slave: {fileID: 1879698080}
 --- !u!54 &1616566479
@@ -5043,8 +5043,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FingerThickness: 10
   MovementTime: 0.25
-  MoveSpeed: 2
-  AngSpeed: 3
+  MoveSpeed: 15
+  AngSpeed: 36
   Master: {fileID: 1507173180}
   Slave: {fileID: 156976720}
 --- !u!54 &1854874356
